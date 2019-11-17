@@ -1,0 +1,8 @@
+<h3>
+    Witaj {{ user.getUsername()  }}proszę potwierdź swój adres e-mail.
+</h3>
+<p>
+    Proszę potwierdzić swój adres email klikając
+    <a href="{{ url('default_confirm_token', {'token': user.getConfirmationToken()}) }}">Ten</a>
+    link lub wpisując kod do formularza: <b>{{ user.getConfirmationToken }}</b>
+</p>

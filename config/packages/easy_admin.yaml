@@ -1,0 +1,38 @@
+easy_admin:
+    entities:
+        # List the entity class name you want to manage
+        Project:
+            class: App\Entity\Project
+            list:
+                actions: [ { name: 'Show' } ]
+            show:
+                fields:
+                    - id
+                    - title
+                    - date
+                    - { property: 'tasks', template: 'easy_admin/Project/tasks.html.twig' }
+                    - images
+        Task:
+            class: App\Entity\Task
+        User:
+            class: App\Entity\User
+            controller: App\Controller\UserAdminController
+        Image:
+            class: App\Entity\Image
+            list:
+                fields:
+                    - id
+                    - {property: 'url', type: 'image', label: 'Image'}
+            form:
+                fields:
+                    - { property: 'file', type: 'Vich\UploaderBundle\Form\Type\VichFileType' }
+        ProfilePicture:
+            class: App\Entity\ProfilePicture
+            list:
+                fields:
+                    - id
+                    - {property: 'url', type: 'image', label: 'ProfilePicture'}
+            form:
+                fields:
+                    - { property: 'file', type: 'Vich\UploaderBundle\Form\Type\VichFileType' }
+
